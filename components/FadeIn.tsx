@@ -30,14 +30,15 @@ export default function FadeIn({ children, delay = 0, className = '', as: Tag = 
     return () => observer.disconnect()
   }, [])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const T = Tag as any
   return (
-    // @ts-expect-error dynamic tag
-    <Tag
+    <T
       ref={ref}
       className={`reveal ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Tag>
+    </T>
   )
 }
