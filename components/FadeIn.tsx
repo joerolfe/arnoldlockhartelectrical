@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode
   delay?: number
   className?: string
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof React.JSX.IntrinsicElements
 }
 
 export default function FadeIn({ children, delay = 0, className = '', as: Tag = 'div' }: Props) {
