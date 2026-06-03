@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #111111;
+  color: #f9fafb;
+}
+
+/* ── Hero entrance animations ─────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-badge  { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.1s both; }
+.hero-line-1 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.2s both; }
+.hero-line-2 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.32s both; }
+.hero-line-3 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.44s both; }
+.hero-sub    { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.56s both; }
+.hero-ctas   { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.66s both; }
+
+/* ── Marquee ──────────────────────────────────────────────── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.marquee-left  { animation: marquee-left  35s linear infinite; }
+.marquee-right { animation: marquee-right 40s linear infinite; }
+.marquee-track:hover .marquee-left,
+.marquee-track:hover .marquee-right {
+  animation-play-state: paused;
+}
+
+/* ── Scroll reveal ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1),
+              transform 0.65s cubic-bezier(0.4,0,0.2,1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle dot-grid texture for hero */
+.hero-pattern {
+  background-image: radial-gradient(circle, rgba(220,38,38,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Red glow utility */
+.glow-red {
+  box-shadow: 0 0 40px rgba(220,38,38,0.15), 0 0 80px rgba(220,38,38,0.05);
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
