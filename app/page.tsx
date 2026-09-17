@@ -203,25 +203,18 @@ export default function Home() {
             </Link>
           </FadeIn>
 
-          {/*
-            Mobile: 2-col, first card spans full width
-            sm: 2-col, first card spans full width
-            lg: 3-col editorial (first spans 2)
-          */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+          {/* Single row — sized so most projects fit on screen, last one peeks and needs a scroll to reveal fully */}
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {projects.map((p, i) => (
               <FadeIn
                 key={p.name}
                 delay={i * 70}
-                className={[
-                  'h-full',
-                  i === 0 ? 'col-span-2 lg:col-span-2' : '',
-                ].join(' ')}
+                className="flex-shrink-0 w-[72%] sm:w-[42%] md:w-[30%] lg:w-[18%] snap-start"
               >
-                <div className="group relative rounded-xl overflow-hidden bg-[#1a1a1a] h-full" style={{ aspectRatio: i === 0 ? '16/9' : '4/3' }}>
+                <div className="group relative rounded-xl overflow-hidden bg-[#1a1a1a]" style={{ aspectRatio: '4/3' }}>
                   <Image
                     src={p.image} alt={p.alt} fill
-                    sizes={i === 0 ? '100vw' : '(max-width: 1024px) 50vw, 33vw'}
+                    sizes="(max-width: 640px) 70vw, (max-width: 1024px) 30vw, 19vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
@@ -250,7 +243,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/8">
             {whyPoints.map(({ number, title, body }, i) => (
-              <FadeIn key={title} delay={i * 80} className="bg-[#111111] p-6 sm:p-8">
+              <FadeIn key={title} delay={i * 80} variant="pop" className="bg-[#111111] p-6 sm:p-8">
                 <p className="text-red-500/50 text-xs font-bold tracking-widest mb-4 sm:mb-6">{number}</p>
                 <h4 className="text-white font-bold text-base sm:text-lg mb-2 sm:mb-3">{title}</h4>
                 <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
@@ -266,93 +259,6 @@ export default function Home() {
       {/* ── Reviews ───────────────────────────────────────────────────────── */}
       <ReviewsCarousel />
 
-      {/* ── Get in Touch ──────────────────────────────────────────────────── */}
-      <section className="bg-[#0d0d0d] border-t border-white/8">
-
-        {/* Status bar */}
-        <div className="border-b border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-            <p className="text-gray-600 text-[10px] font-bold tracking-[0.2em] uppercase">Get in Touch</p>
-            <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <p className="text-gray-600 text-[10px] font-semibold tracking-wide">Responding within 24 hours</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Main content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-          <FadeIn className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-
-            {/* Left — headline + CTAs */}
-            <div className="lg:col-span-3">
-              <h2 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-white leading-none tracking-tight mb-6">
-                Ready to get<br />
-                <span className="italic text-red-500" style={{ fontFamily: 'var(--font-playfair)' }}>started?</span>
-              </h2>
-              <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md">
-                Get a free, no-obligation quote today. Whether it&apos;s a single socket or a full commercial fit-out — we&apos;re ready to help.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-7 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-colors text-sm w-full sm:w-auto"
-              >
-                Request a Free Quote
-              </Link>
-            </div>
-
-            {/* Right — contact details */}
-            <div className="lg:col-span-2 lg:pl-12 lg:border-l lg:border-white/8 flex flex-col justify-center space-y-6">
-
-              <div>
-                <p className="text-gray-600 text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5">Phone</p>
-                <a href="tel:07878009694" className="text-white text-2xl font-bold hover:text-red-500 transition-colors tracking-tight">
-                  07878 009694
-                </a>
-              </div>
-
-              <div className="h-px bg-white/5" />
-
-              <div>
-                <p className="text-gray-600 text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5">Email</p>
-                <a href="mailto:contact@arnoldlockhartelectrical.com" className="text-white text-sm font-medium hover:text-red-500 transition-colors break-all">
-                  contact@arnoldlockhartelectrical.com
-                </a>
-              </div>
-
-              <div className="h-px bg-white/5" />
-
-              <div>
-                <p className="text-gray-600 text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5">Location</p>
-                <p className="text-white text-sm font-medium">Branston, Burton-on-Trent</p>
-                <p className="text-gray-500 text-xs mt-0.5">Staffordshire, DE14</p>
-              </div>
-
-              <div className="h-px bg-white/5" />
-
-              {/* Socials */}
-              <div className="flex gap-2 pt-1">
-                {[
-                  { label: 'Facebook', href: 'https://www.facebook.com/arnoldlockhartelectric/', icon: <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /> },
-                  { label: 'Instagram', href: 'https://www.instagram.com/arnoldlockhart', icon: <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /> },
-                  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/arnold-lockhart-electrical-ltd/', icon: <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /> },
-                ].map(({ label, href, icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="w-9 h-9 rounded-full border border-white/8 hover:border-red-500/30 bg-white/3 hover:bg-red-500/10 flex items-center justify-center text-gray-500 hover:text-red-500 transition-all"
-                  >
-                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">{icon}</svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
     </>
   )
 }

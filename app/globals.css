@@ -56,6 +56,19 @@ body {
   transform: translateY(0);
 }
 
+/* Pop-in reveal — scale up with a slight overshoot, used for the "Why Us" boxes */
+.reveal-pop {
+  opacity: 0;
+  transform: scale(0.82);
+  transition: opacity 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-pop.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Subtle dot-grid texture for hero */
 .hero-pattern {
   background-image: radial-gradient(circle, rgba(220,38,38,0.07) 1px, transparent 1px);
@@ -65,6 +78,15 @@ body {
 /* Red glow utility */
 .glow-red {
   box-shadow: 0 0 40px rgba(220,38,38,0.15), 0 0 80px rgba(220,38,38,0.05);
+}
+
+/* Hide scrollbar for horizontal scroll strips */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Line clamp utility */

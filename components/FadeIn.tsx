@@ -7,9 +7,10 @@ interface Props {
   delay?: number
   className?: string
   as?: keyof React.JSX.IntrinsicElements
+  variant?: 'up' | 'pop'
 }
 
-export default function FadeIn({ children, delay = 0, className = '', as: Tag = 'div' }: Props) {
+export default function FadeIn({ children, delay = 0, className = '', as: Tag = 'div', variant = 'up' }: Props) {
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -32,10 +33,11 @@ export default function FadeIn({ children, delay = 0, className = '', as: Tag = 
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const T = Tag as any
+  const revealClass = variant === 'pop' ? 'reveal-pop' : 'reveal'
   return (
     <T
       ref={ref}
-      className={`reveal ${className}`}
+      className={`${revealClass} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

@@ -45,7 +45,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-3 py-2 lg:px-5">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center flex-shrink-0">
+            <Link href="/" id="navbar-logo" className="flex items-center flex-shrink-0">
               <Image
                 src="/FIRESECURITYLOGO.avif"
                 alt="Arnold Lockhart Electrical Fire & Security"
