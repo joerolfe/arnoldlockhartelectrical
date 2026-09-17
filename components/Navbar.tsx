@@ -42,16 +42,16 @@ export default function Navbar() {
               : 'bg-[#111111]/75 backdrop-blur-sm border border-white/8'
           }`}
         >
-          <div className="flex items-center justify-between px-3 py-2 lg:px-5">
+          <div className="flex items-center justify-between px-3 py-3.5 lg:px-5">
 
             {/* Logo */}
             <Link href="/" id="navbar-logo" className="flex items-center flex-shrink-0">
               <Image
                 src="/FIRESECURITYLOGO.avif"
                 alt="Arnold Lockhart Electrical Fire & Security"
-                width={200}
-                height={56}
-                className="h-14 w-auto"
+                width={308}
+                height={176}
+                className="h-11 w-auto"
                 priority
               />
             </Link>
@@ -105,8 +105,8 @@ export default function Navbar() {
             <Image
               src="/FIRESECURITYLOGO.avif"
               alt="Arnold Lockhart Electrical Fire & Security"
-              width={160}
-              height={44}
+              width={308}
+              height={176}
               className="h-12 w-auto"
             />
           </Link>

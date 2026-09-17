@@ -61,8 +61,8 @@ export default function LoadingScreen() {
         <Image
           src="/FIRESECURITYLOGO.avif"
           alt="Arnold Lockhart Electrical Fire & Security"
-          width={280}
-          height={78}
+          width={308}
+          height={176}
           priority
           className="w-56 sm:w-64 h-auto"
         />
