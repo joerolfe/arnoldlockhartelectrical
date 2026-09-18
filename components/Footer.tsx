@@ -128,7 +128,7 @@ export default function Footer() {
         {/* ── Bottom bar ────────────────────────────────────────── */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
           <p className="text-gray-600 text-xs">
-            © {new Date().getFullYear()} Arnold & Lockhart Electrical Ltd. All rights reserved.
+            © {new Date().getFullYear()} Arnold Lockhart Electrical Ltd. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
             Branston, Burton-on-Trent · DE14
