@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Arnold & Lockhart Electrical Ltd | Burton-on-Trent",
+  title: "Arnold Lockhart Electrical Ltd | Burton-on-Trent",
   description:
     "Expert electrical contractors based in Burton-on-Trent. Domestic installations, commercial fit-outs, fire alarms and security systems across the Midlands.",
   keywords: "electrician Burton-on-Trent, electrical contractor Midlands, domestic electrical, commercial electrical, fire alarm installation",
