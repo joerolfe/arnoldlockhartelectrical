@@ -10,7 +10,7 @@ const services = [
   {
     number: '01',
     title: 'Domestic Electrical',
-    description: 'Full rewires, consumer unit upgrades, new circuits, sockets, lighting, EV chargers, and landlord safety certificates for homeowners across the Midlands.',
+    description: 'Full rewires, consumer unit upgrades, new circuits, sockets, lighting, EV chargers, and landlord safety certificates for homeowners across the Midlands and beyond.',
     href: '/services#domestic',
   },
   {
@@ -25,6 +25,12 @@ const services = [
     description: 'BS 5839 compliant fire alarm systems, CCTV, access control, intruder alarms, and regular servicing to keep your people and premises protected.',
     href: '/services#fire-security',
   },
+  {
+    number: '04',
+    title: 'Air Con, Solar & Ventilation',
+    description: 'Air conditioning, HVAC and MVHR ventilation systems, plus solar panel and battery storage installation to cut running costs and improve comfort.',
+    href: '/services#climate-energy',
+  },
 ]
 
 const stats = [
@@ -36,7 +42,7 @@ const stats = [
 
 const whyPoints = [
   { number: '01', title: 'NICEIC Approved', body: 'Every engineer fully qualified and registered — work certified to the highest industry standard.' },
-  { number: '02', title: 'Local & Trusted', body: 'Based in Branston, serving Burton-on-Trent and the wider Midlands with honest pricing.' },
+  { number: '02', title: 'Local Roots, National Reach', body: 'Based in Branston, Burton-on-Trent, with honest pricing — and happy to travel for the right job, anywhere in the country.' },
   { number: '03', title: 'Major Brands', body: "From home rewires to Aston Martin and Trent Bridge — the same standard on every job." },
   { number: '04', title: 'No Surprises', body: "Upfront quotes, clear communication, and we only leave when you're fully satisfied." },
 ]
@@ -55,12 +61,12 @@ const projects = [
 export default function Home() {
   return (
     <>
-      {/* ── Hero (unchanged) ──────────────────────────────────────────────── */}
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80"
-            alt="Professional electrician at work"
+            src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1920&q=80"
+            alt="Electrician testing electrical panel wiring"
             fill priority sizes="100vw"
             className="object-cover object-center"
           />
@@ -75,14 +81,14 @@ export default function Home() {
               <span className="text-white/80 text-xs font-semibold tracking-[0.15em] uppercase">NICEIC Approved · Electrical Specialists</span>
             </div>
             <h1 className="mb-7 space-y-1">
-              <span className="hero-line-1 block text-5xl sm:text-6xl lg:text-[5.25rem] font-black text-white leading-none tracking-tight">Electrical done</span>
-              <span className="hero-line-2 block text-5xl sm:text-6xl lg:text-[5.25rem] font-black text-white leading-none tracking-tight">right,</span>
-              <span className="hero-line-3 block text-5xl sm:text-6xl lg:text-[5.25rem] italic text-red-500 leading-none tracking-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
-                every single time.
+              <span className="hero-line-1 block text-5xl sm:text-6xl lg:text-[5.25rem] font-black text-white leading-none tracking-tight">From sockets</span>
+              <span className="hero-line-2 block text-5xl sm:text-6xl lg:text-[5.25rem] font-black text-white leading-none tracking-tight">to solar,</span>
+              <span className="hero-line-3 block text-5xl sm:text-6xl lg:text-[5.25rem] font-black text-red-500 leading-none tracking-tight">
+                fully covered.
               </span>
             </h1>
             <p className="hero-sub text-gray-300 text-base sm:text-lg leading-relaxed mb-10 max-w-lg mx-auto">
-              Domestic, commercial & fire security installations across Burton-on-Trent and the Midlands — fully qualified, no call-out charge, ever.
+              Domestic, commercial, fire &amp; security, air conditioning and solar — fully qualified engineers based in Burton-on-Trent, working across the Midlands and nationwide.
             </p>
             <div className="hero-ctas flex flex-col sm:flex-row gap-3 justify-center">
               <a href="tel:07878009694" className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-sm transition-all">

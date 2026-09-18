@@ -66,6 +66,27 @@ const services = [
       'Annual service contracts',
     ],
   },
+  {
+    number: '04',
+    id: 'climate-energy',
+    title: 'Air Con, Solar & Ventilation',
+    tagline: 'Comfort and efficiency, built in.',
+    description: 'From air conditioning and ventilation to solar panels and battery storage, we design and install complete climate and renewable energy systems — helping homes and businesses cut running costs and stay comfortable all year round.',
+    image: 'https://images.unsplash.com/photo-1624397640148-949b1732bb0a?w=900&q=80',
+    imageAlt: 'Solar panel installation on a residential roof',
+    items: [
+      'Air conditioning installation & servicing',
+      'Split & multi-split AC systems',
+      'HVAC design & installation',
+      'Mechanical ventilation (MVHR) systems',
+      'Whole-house ventilation retrofits',
+      'Solar panel (PV) installation',
+      'Battery storage systems',
+      'Solar & battery integration',
+      'EV charger & solar integration',
+      'Energy efficiency assessments',
+    ],
+  },
 ]
 
 export default function ServicesPage() {
@@ -84,7 +105,7 @@ export default function ServicesPage() {
               <span className="italic text-red-500" style={{ fontFamily: 'var(--font-playfair)' }}>under one roof.</span>
             </h1>
             <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
-              Domestic installations, commercial fit-outs, fire alarms and security systems — all delivered by the same qualified, trusted team.
+              Domestic installations, commercial fit-outs, fire &amp; security systems, air conditioning and solar — all delivered by the same qualified, trusted team.
             </p>
           </FadeIn>
 

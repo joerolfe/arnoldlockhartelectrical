@@ -21,7 +21,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-xs">
-              Professional electrical contractors based in Branston, Burton-on-Trent. Trusted by leading businesses across the Midlands and beyond.
+              Professional electrical contractors based in Branston, Burton-on-Trent. Trusted by leading businesses across the Midlands and throughout the UK.
             </p>
             <div className="flex flex-wrap gap-2">
               {['NICEIC Approved', 'Part P Registered', 'Fully Insured'].map(badge => (
@@ -60,6 +60,8 @@ export default function Footer() {
                   'Commercial Electrical',
                   'Fire Alarm Systems',
                   'CCTV & Security',
+                  'Air Conditioning',
+                  'Solar & Battery Storage',
                   'Consumer Units',
                   'Landlord Certificates',
                 ].map(service => (
