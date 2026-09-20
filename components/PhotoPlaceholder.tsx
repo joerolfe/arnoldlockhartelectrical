@@ -1,4 +1,4 @@
-export default function ProjectPlaceholder() {
+export default function PhotoPlaceholder() {
   return (
     <>
       <div className="absolute inset-0 bg-gradient-to-br from-[#222222] via-[#2a1a1a] to-[#3a1a1a] grayscale group-hover:grayscale-0 transition-all duration-500" />

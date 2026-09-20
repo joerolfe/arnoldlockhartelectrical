@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import FadeIn from '@/components/FadeIn'
+import PhotoPlaceholder from '@/components/PhotoPlaceholder'
 
 const services = [
   {
@@ -9,8 +9,6 @@ const services = [
     title: 'Domestic Electrical',
     tagline: 'Your home, wired right.',
     description: 'From a single socket to a full rewire, we handle every aspect of domestic electrical work. Safe, certified, and carried out by fully qualified engineers who treat your home with respect.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
-    imageAlt: 'Domestic electrical installation',
     items: [
       'Full property rewires',
       'Consumer unit upgrades',
@@ -30,8 +28,6 @@ const services = [
     title: 'Commercial Electrical',
     tagline: 'Built for business.',
     description: "We've delivered commercial electrical projects for some of the UK's most recognised names — Aston Martin, Trent Bridge, Timpsons. Whatever the scale, our commercial team works efficiently to meet deadlines without compromising on safety or quality.",
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80',
-    imageAlt: 'Commercial electrical installation',
     items: [
       'Office & retail fit-outs',
       'Industrial & factory wiring',
@@ -51,8 +47,6 @@ const services = [
     title: 'Fire & Security',
     tagline: 'Protection you can rely on.',
     description: 'We design, install, and maintain fire alarm and security systems to BS standards. Backed by ongoing service contracts, you\'re never left without protection — whether it\'s a single smoke detector or a full addressable fire alarm system across multiple buildings.',
-    image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=900&q=80',
-    imageAlt: 'Fire alarm and security installation',
     items: [
       'Fire alarm design & installation (BS 5839)',
       'Addressable & conventional systems',
@@ -72,8 +66,6 @@ const services = [
     title: 'Air Con, Solar & Ventilation',
     tagline: 'Comfort and efficiency, built in.',
     description: 'From air conditioning and ventilation to solar panels and battery storage, we design and install complete climate and renewable energy systems — helping homes and businesses cut running costs and stay comfortable all year round.',
-    image: 'https://images.unsplash.com/photo-1624397640148-949b1732bb0a?w=900&q=80',
-    imageAlt: 'Solar panel installation on a residential roof',
     items: [
       'Air conditioning installation & servicing',
       'Split & multi-split AC systems',
@@ -175,16 +167,10 @@ export default function ServicesPage() {
                 </FadeIn>
               </div>
 
-              {/* Image */}
+              {/* Placeholder photo */}
               <FadeIn delay={150} className={`relative ${index % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+                <div className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
+                  <PhotoPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
                 {/* Number watermark */}

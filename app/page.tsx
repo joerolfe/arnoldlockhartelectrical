@@ -3,7 +3,7 @@ import Link from 'next/link'
 import ReviewsCarousel from '@/components/ReviewsCarousel'
 import TeamSection from '@/components/TeamSection'
 import FadeIn from '@/components/FadeIn'
-import ProjectPlaceholder from '@/components/ProjectPlaceholder'
+import PhotoPlaceholder from '@/components/PhotoPlaceholder'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -219,7 +219,7 @@ export default function Home() {
                 className="flex-shrink-0 w-[72%] sm:w-[42%] md:w-[30%] lg:w-[18%] snap-start"
               >
                 <div className="group relative rounded-xl overflow-hidden bg-[#1a1a1a]" style={{ aspectRatio: '4/3' }}>
-                  <ProjectPlaceholder />
+                  <PhotoPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
                     <p className="text-red-400 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase mb-0.5">{p.type}</p>

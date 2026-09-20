@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import ProjectPlaceholder from '@/components/ProjectPlaceholder'
+import PhotoPlaceholder from '@/components/PhotoPlaceholder'
 import { useState } from 'react'
 
 const projects = [
@@ -154,7 +154,7 @@ export default function ProjectsPage() {
               >
                 {/* Placeholder photo */}
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <ProjectPlaceholder />
+                  <PhotoPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-transparent to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold tracking-widest uppercase rounded-full">
