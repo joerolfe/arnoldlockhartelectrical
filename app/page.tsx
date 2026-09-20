@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ReviewsCarousel from '@/components/ReviewsCarousel'
 import TeamSection from '@/components/TeamSection'
 import FadeIn from '@/components/FadeIn'
+import ProjectPlaceholder from '@/components/ProjectPlaceholder'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -48,12 +49,12 @@ const whyPoints = [
 ]
 
 const projects = [
-  { name: 'Aston Martin', type: 'Commercial Fit-Out', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80', alt: 'Luxury commercial electrical installation' },
-  { name: 'Trent Bridge', type: 'Stadium & Events', image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80', alt: 'Sports venue electrical installation' },
-  { name: 'Timpsons HQ', type: 'Corporate HQ', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', alt: 'Modern office electrical fit-out' },
-  { name: 'St Peters Gate', type: 'Retail & Hospitality', image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80', alt: 'Restaurant and bar installation' },
-  { name: 'Deciem, Edinburgh', type: 'Retail Installation', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80', alt: 'Premium retail electrical installation' },
-  { name: 'Barn Conversions', type: 'Domestic Projects', image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80', alt: 'Barn conversion electrical installation' },
+  { name: 'Aston Martin', type: 'Commercial Fit-Out' },
+  { name: 'Trent Bridge', type: 'Stadium & Events' },
+  { name: 'Timpsons HQ', type: 'Corporate HQ' },
+  { name: 'St Peters Gate', type: 'Retail & Hospitality' },
+  { name: 'Deciem, Edinburgh', type: 'Retail Installation' },
+  { name: 'Barn Conversions', type: 'Domestic Projects' },
 ]
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -218,11 +219,7 @@ export default function Home() {
                 className="flex-shrink-0 w-[72%] sm:w-[42%] md:w-[30%] lg:w-[18%] snap-start"
               >
                 <div className="group relative rounded-xl overflow-hidden bg-[#1a1a1a]" style={{ aspectRatio: '4/3' }}>
-                  <Image
-                    src={p.image} alt={p.alt} fill
-                    sizes="(max-width: 640px) 70vw, (max-width: 1024px) 30vw, 19vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  <ProjectPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
                     <p className="text-red-400 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase mb-0.5">{p.type}</p>

@@ -1,7 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
+import ProjectPlaceholder from '@/components/ProjectPlaceholder'
 import { useState } from 'react'
 
 const projects = [
@@ -11,8 +11,6 @@ const projects = [
     category: 'commercial',
     location: 'Midlands',
     description: 'Full electrical installation for a prestigious Aston Martin dealership — high-spec lighting systems, power distribution, and bespoke showroom electrical throughout.',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
-    alt: 'Aston Martin dealership electrical installation',
     tags: ['Lighting', 'Power', 'Fit-Out'],
   },
   {
@@ -21,8 +19,6 @@ const projects = [
     category: 'commercial',
     location: 'Nottingham',
     description: 'Electrical works across the iconic Trent Bridge cricket ground, including floodlighting, power infrastructure, and event facilities.',
-    image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80',
-    alt: 'Trent Bridge cricket ground',
     tags: ['Stadium', 'Lighting', 'Events'],
   },
   {
@@ -31,8 +27,6 @@ const projects = [
     category: 'commercial',
     location: 'Midlands',
     description: 'Complete electrical fit-out of a major corporate headquarters — open-plan office wiring, data cabling, emergency lighting, and security systems.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
-    alt: 'Corporate office electrical installation',
     tags: ['Office', 'Data', 'Security'],
   },
   {
@@ -41,8 +35,6 @@ const projects = [
     category: 'commercial',
     location: 'Nottingham',
     description: 'Atmospheric electrical installation for a premium hospitality venue — feature lighting, back-of-house power, and fire alarm systems.',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
-    alt: 'Restaurant and bar electrical installation',
     tags: ['Hospitality', 'Lighting', 'Fire Safety'],
   },
   {
@@ -51,8 +43,6 @@ const projects = [
     category: 'commercial',
     location: 'Edinburgh',
     description: 'Premium retail electrical installation for international skincare brand Deciem — clean, minimal lighting to match their distinct aesthetic.',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-    alt: 'Premium retail electrical installation',
     tags: ['Retail', 'Lighting'],
   },
   {
@@ -61,8 +51,6 @@ const projects = [
     category: 'domestic',
     location: 'Staffordshire & Derbyshire',
     description: 'Multiple barn conversion projects — full rewires, smart lighting, and EV charging points, bringing beautiful rural properties into the 21st century.',
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
-    alt: 'Barn conversion electrical installation',
     tags: ['Rewire', 'EV Charging', 'Smart'],
   },
   {
@@ -71,8 +59,6 @@ const projects = [
     category: 'commercial',
     location: 'Midlands',
     description: 'Industrial electrical rewiring including three-phase power, heavy machinery circuits, and full distribution board replacements for manufacturing clients.',
-    image: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=800&q=80',
-    alt: 'Industrial electrical installation',
     tags: ['Three Phase', 'Industrial', 'Distribution'],
   },
   {
@@ -81,8 +67,6 @@ const projects = [
     category: 'domestic',
     location: 'Burton-on-Trent',
     description: 'First-fix and second-fix electrical installations for residential developers — fast, reliable, and certified to keep builds on schedule.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    alt: 'New build residential electrical installation',
     tags: ['New Build', 'First Fix', 'Second Fix'],
   },
 ]
@@ -168,15 +152,9 @@ export default function ProjectsPage() {
                   animation: `fadeInUp 0.5s ease ${i * 60}ms both`,
                 }}
               >
-                {/* Image */}
+                {/* Placeholder photo */}
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <ProjectPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-transparent to-transparent" />
                   <div className="absolute top-4 left-4">
                     <span className="px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold tracking-widest uppercase rounded-full">
