@@ -133,6 +133,17 @@ export default function Footer() {
             © {new Date().getFullYear()} Arnold Lockhart Electrical Ltd. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
+            Site by{' '}
+            <a
+              href="https://rolfebrandscaling.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-red-500 transition-colors"
+            >
+              rolfebrandscaling.com
+            </a>
+          </p>
+          <p className="text-gray-600 text-xs">
             Branston, Burton-on-Trent · DE14
           </p>
         </div>
