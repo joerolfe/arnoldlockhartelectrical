@@ -9,24 +9,6 @@ body {
   color: #f9fafb;
 }
 
-/* ── Hero entrance animations ─────────────────────────────── */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.hero-badge  { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.1s both; }
-.hero-line-1 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.2s both; }
-.hero-line-2 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.32s both; }
-.hero-line-3 { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.44s both; }
-.hero-sub    { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.56s both; }
-.hero-ctas   { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.66s both; }
-
 /* ── Marquee ──────────────────────────────────────────────── */
 @keyframes marquee-left {
   from { transform: translateX(0); }

@@ -1,4 +1,5 @@
 import FadeIn from './FadeIn'
+import ScrubHeading from './home/ScrubHeading'
 
 const team = [
   {
@@ -33,28 +34,32 @@ const team = [
 
 export default function TeamSection() {
   return (
-    <section className="py-16 sm:py-24 lg:py-28 bg-[#111111] border-t border-white/8">
+    <section className="py-20 sm:py-28 lg:py-40 bg-[#111111] border-t border-white/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <FadeIn className="mb-10 sm:mb-14">
-          <p className="text-red-500 text-xs font-semibold tracking-[0.2em] uppercase mb-3 sm:mb-4">The People</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
-            Meet the team.
-          </h2>
-        </FadeIn>
+        <div className="mb-10 sm:mb-16">
+          <FadeIn variant="lux">
+            <p className="eyebrow text-red-500 text-xs font-semibold tracking-[0.2em] uppercase mb-4 sm:mb-6">The People</p>
+          </FadeIn>
+          <ScrubHeading
+            className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.02] tracking-tight"
+            segments={[{ text: 'Meet the team.' }]}
+          />
+        </div>
 
         {/* Mobile: horizontal snap carousel. sm+: grid */}
         <div
-          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none pb-4 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none scroll-px-4 pb-4 sm:pb-0 -mx-4 sm:mx-0 px-4 sm:px-0"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {team.map(({ name, role, bio, badge, initials }, i) => (
             <FadeIn
               key={name}
-              delay={i * 80}
+              delay={i * 110}
+              variant="lux"
               className="flex-shrink-0 w-[78vw] sm:w-auto snap-start h-full"
             >
-              <div className="group relative bg-[#161616] border border-white/5 hover:border-white/10 rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col">
+              <div className="group relative bg-[#161616] border border-white/5 hover:border-red-500/25 hover:-translate-y-2 rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col">
 
                 {/* Placeholder photo */}
                 <div className="relative aspect-[3/4] overflow-hidden">

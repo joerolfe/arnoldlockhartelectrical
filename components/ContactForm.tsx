@@ -49,37 +49,43 @@ export default function ContactForm() {
     )
   }
 
-  const inputClass = "w-full px-4 py-3.5 bg-[#0d0d0d] border border-white/8 focus:border-red-500/40 focus:outline-none rounded-xl text-white placeholder-gray-600 text-sm transition-colors"
+  const inputClass = "field w-full px-4 py-4 bg-white/[0.03] border border-white/10 hover:border-white/20 focus:outline-none rounded-xl text-white placeholder-gray-600 text-sm"
+  const labelClass = "block text-[11px] font-semibold text-white/50 tracking-[0.15em] uppercase mb-2.5"
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={onSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-semibold text-gray-400 tracking-wide mb-2">Full Name <span className="text-red-500">*</span></label>
+          <label className={labelClass}>Full Name <span className="text-red-500">*</span></label>
           <input name="name" type="text" required value={form.name} onChange={onChange} placeholder="John Smith" className={inputClass} />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-gray-400 tracking-wide mb-2">Email <span className="text-red-500">*</span></label>
+          <label className={labelClass}>Email <span className="text-red-500">*</span></label>
           <input name="email" type="email" required value={form.email} onChange={onChange} placeholder="john@example.com" className={inputClass} />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-semibold text-gray-400 tracking-wide mb-2">Phone</label>
+          <label className={labelClass}>Phone</label>
           <input name="phone" type="tel" value={form.phone} onChange={onChange} placeholder="07700 000000" className={inputClass} />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-gray-400 tracking-wide mb-2">Service Required</label>
-          <select name="service" value={form.service} onChange={onChange} className={`${inputClass} appearance-none`}>
-            <option value="">Select a service...</option>
-            {services.map(s => <option key={s} value={s}>{s}</option>)}
-          </select>
+          <label className={labelClass}>Service Required</label>
+          <div className="relative">
+            <select name="service" value={form.service} onChange={onChange} className={`${inputClass} appearance-none pr-10`}>
+              <option value="">Select a service...</option>
+              {services.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+            <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-gray-400 tracking-wide mb-2">Tell us about your project <span className="text-red-500">*</span></label>
+        <label className={labelClass}>Tell us about your project <span className="text-red-500">*</span></label>
         <textarea
           name="message" required rows={5} value={form.message} onChange={onChange}
           placeholder="Describe your project or requirements — the more detail the better."
@@ -90,7 +96,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === 'sending'}
-        className="w-full py-4 bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white font-bold rounded-full transition-colors text-sm flex items-center justify-center gap-2"
+        className="nav-cta w-full py-4 disabled:opacity-60 text-white font-bold rounded-full text-sm flex items-center justify-center gap-2"
       >
         {state === 'sending' ? (
           <>

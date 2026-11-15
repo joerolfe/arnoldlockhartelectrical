@@ -7,11 +7,12 @@ interface Props {
   delay?: number
   className?: string
   as?: keyof React.JSX.IntrinsicElements
-  variant?: 'up' | 'pop'
+  variant?: 'up' | 'pop' | 'lux' | 'stagger'
 }
 
 export default function FadeIn({ children, delay = 0, className = '', as: Tag = 'div', variant = 'up' }: Props) {
   const ref = useRef<HTMLElement>(null)
+  const shown = useRef(false)
 
   useEffect(() => {
     const el = ref.current
@@ -20,6 +21,7 @@ export default function FadeIn({ children, delay = 0, className = '', as: Tag = 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          shown.current = true
           el.classList.add('is-visible')
           observer.unobserve(el)
         }
@@ -31,9 +33,14 @@ export default function FadeIn({ children, delay = 0, className = '', as: Tag = 
     return () => observer.disconnect()
   }, [])
 
+  // React rewrites the class attribute when className changes — keep the revealed state
+  useEffect(() => {
+    if (shown.current) ref.current?.classList.add('is-visible')
+  }, [className, variant])
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const T = Tag as any
-  const revealClass = variant === 'pop' ? 'reveal-pop' : 'reveal'
+  const revealClass = { up: 'reveal', pop: 'reveal-pop', lux: 'reveal-lux', stagger: 'reveal-stagger' }[variant]
   return (
     <T
       ref={ref}

@@ -36,6 +36,8 @@ export default function LoadingScreen() {
       return () => clearTimeout(flyTimer)
     }
     if (phase === 'exit') {
+      // Lets page entrance animations start as the loader lifts
+      document.documentElement.classList.add('app-ready')
       const exitTimer = setTimeout(() => {
         setPhase('done')
         document.body.style.overflow = ''

@@ -1,5 +1,8 @@
 'use client'
 
+import FadeIn from './FadeIn'
+import ScrubHeading from './home/ScrubHeading'
+
 const reviews = [
   {
     name: 'Jo Waterworth',
@@ -77,14 +80,17 @@ const row2 = [...[...reviews].reverse(), ...[...reviews].reverse()]
 
 export default function ReviewsCarousel() {
   return (
-    <section className="py-16 sm:py-24 lg:py-28 bg-[#0d0d0d] border-t border-white/8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+    <section className="py-20 sm:py-28 lg:py-40 bg-[#0d0d0d] border-t border-white/8 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-16">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <p className="text-red-500 text-xs font-semibold tracking-[0.2em] uppercase mb-3 sm:mb-4">Client Reviews</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
-              What our clients say.
-            </h2>
+            <FadeIn variant="lux">
+              <p className="eyebrow text-red-500 text-xs font-semibold tracking-[0.2em] uppercase mb-4 sm:mb-6">Client Reviews</p>
+            </FadeIn>
+            <ScrubHeading
+              className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.02] tracking-tight"
+              segments={[{ text: 'What our clients say.' }]}
+            />
           </div>
 
           {/* Google rating pill */}

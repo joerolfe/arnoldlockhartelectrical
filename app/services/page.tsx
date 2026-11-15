@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import FadeIn from '@/components/FadeIn'
 import PhotoPlaceholder from '@/components/PhotoPlaceholder'
+import Scene from '@/components/home/Scene'
+import ScrubHeading from '@/components/home/ScrubHeading'
+import PageEffects from '@/components/home/PageEffects'
 
 const services = [
   {
@@ -81,121 +84,152 @@ const services = [
   },
 ]
 
+const eyebrow = 'eyebrow text-red-500 text-xs font-semibold tracking-[0.2em] uppercase'
+const delay = (ms: number) => ({ '--d': ms }) as React.CSSProperties
+
+const Arrow = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-4 h-4 ${className}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+)
+
+const QuoteButton = ({ className = '' }: { className?: string }) => (
+  <Link
+    href="/contact"
+    className={`nav-cta group inline-flex items-center gap-2 px-6 py-3.5 text-white font-bold rounded-full text-sm ${className}`}
+  >
+    Get a Quote
+    <Arrow className="group-hover:translate-x-1 transition-transform duration-300" />
+  </Link>
+)
+
 export default function ServicesPage() {
   return (
     <>
-      {/* ── Page hero ─────────────────────────────────────────────────────── */}
-      <section className="pt-36 pb-16 sm:pt-40 sm:pb-20 bg-[#0d0d0d] relative overflow-hidden">
-        <div className="absolute inset-0 hero-pattern opacity-30" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+      <PageEffects />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <p className="text-red-500 text-xs font-semibold tracking-[0.2em] uppercase mb-4">What We Offer</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none tracking-tight mb-6">
-              Everything electrical,{' '}
-              <span className="italic text-red-500" style={{ fontFamily: 'var(--font-playfair)' }}>under one roof.</span>
+      {/* ── Page hero ─────────────────────────────────────────────────────── */}
+      <section data-glow className="relative min-h-[100svh] flex flex-col bg-[#0b0b0b] overflow-hidden">
+        <div className="absolute inset-0 hero-glow" aria-hidden />
+
+        <div className="relative flex-1 flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 sm:pt-32 pb-10 sm:pb-14">
+          <div>
+            <p className={`hero-in ${eyebrow} mb-5 sm:mb-7`} style={delay(0)}>What We Offer</p>
+            <h1 className="page-hero-title font-black text-white leading-[0.98] tracking-tight mb-7 sm:mb-10">
+              <span className="hero-mask"><span className="whitespace-nowrap" style={delay(120)}>Everything</span></span>
+              <span className="hero-mask"><span className="whitespace-nowrap" style={delay(220)}>electrical,</span></span>
+              <span className="hero-mask hero-mask-italic">
+                <span className="whitespace-nowrap italic text-red-500" style={{ ...delay(320), fontFamily: 'var(--font-playfair)' }}>under one roof.</span>
+              </span>
             </h1>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
+            <p className="hero-in text-gray-200 text-lg sm:text-2xl leading-relaxed max-w-2xl" style={delay(600)}>
               Domestic installations, commercial fit-outs, fire &amp; security systems, air conditioning and solar — all delivered by the same qualified, trusted team.
             </p>
-          </FadeIn>
+          </div>
+        </div>
 
-          {/* Service anchor links */}
-          <FadeIn delay={150} className="mt-10 flex flex-wrap gap-3">
+        {/* Service anchor links */}
+        <div className="hero-in relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full" style={delay(700)}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
             {services.map(s => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="inline-flex items-center gap-2 px-4 py-2 border border-white/8 hover:border-red-500/30 rounded-full text-gray-400 hover:text-red-500 text-xs font-semibold tracking-wide transition-all"
+                className="wire-link group flex items-center gap-4 py-4 sm:py-6 border-t border-white/10 text-gray-400 hover:text-white transition-colors duration-300"
               >
-                <span className="text-red-500/50">{s.number}</span>
-                {s.title}
+                <span className="text-red-500/70 text-xs font-bold tracking-widest">{s.number}</span>
+                <span className="text-sm font-semibold tracking-wide flex-1">{s.title}</span>
+                <Arrow className="rotate-90 text-white/25 group-hover:text-red-500 group-hover:translate-y-1 transition-all duration-300" />
               </a>
             ))}
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* ── Service sections ──────────────────────────────────────────────── */}
-      {services.map((service, index) => (
+      {/* ── Service sections — text pins while the detail scrolls past ────── */}
+      {services.map((service) => (
         <section
           key={service.id}
           id={service.id}
-          className={`py-16 sm:py-24 lg:py-28 border-t border-white/8 ${index % 2 === 0 ? 'bg-[#111111]' : 'bg-[#0d0d0d]'}`}
+          className="scroll-mt-0 py-20 sm:py-28 lg:py-40 bg-[#111111] border-t border-white/8"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${index % 2 === 1 ? 'lg:[direction:rtl]' : ''}`}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
               {/* Content */}
-              <div className={index % 2 === 1 ? 'lg:[direction:ltr]' : ''}>
-                <FadeIn>
-                  <p className="text-red-500/60 text-xs font-bold tracking-[0.2em] uppercase mb-4">{service.number}</p>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
-                    {service.title}
-                  </h2>
-                  <p className="text-gray-500 text-base mb-5 italic" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+                <FadeIn variant="lux">
+                  <p className={`${eyebrow} mb-5 sm:mb-6`}>{service.number}</p>
+                </FadeIn>
+                <ScrubHeading
+                  className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.02] tracking-tight mb-5"
+                  segments={[{ text: service.title }]}
+                />
+                <FadeIn variant="lux" delay={80}>
+                  <p className="text-gray-300 text-xl sm:text-2xl mb-6 italic" style={{ fontFamily: 'var(--font-playfair)' }}>
                     {service.tagline}
                   </p>
-                  <p className="text-gray-400 text-base leading-relaxed mb-8">
+                  <p className="text-gray-400 text-base leading-relaxed">
                     {service.description}
                   </p>
-                </FadeIn>
-
-                {/* Feature list */}
-                <FadeIn delay={100}>
-                  <div className="border-t border-white/8">
-                    {service.items.map((item, i) => (
-                      <div key={item} className="flex items-center gap-3 py-3 border-b border-white/5">
-                        <span className="w-1 h-1 rounded-full bg-red-500 flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </FadeIn>
-
-                <FadeIn delay={200} className="mt-8">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-colors text-sm"
-                  >
-                    Get a Quote
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
+                  <QuoteButton className="hidden lg:inline-flex mt-10" />
                 </FadeIn>
               </div>
 
-              {/* Placeholder photo */}
-              <FadeIn delay={150} className={`relative ${index % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
-                <div className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
-                  <PhotoPlaceholder />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-                {/* Number watermark */}
-                <div className="absolute -bottom-4 -right-4 text-[8rem] font-black text-white/3 leading-none select-none pointer-events-none">
-                  {service.number}
-                </div>
-              </FadeIn>
+              {/* Detail */}
+              <div className="lg:col-span-7">
+                {/* Placeholder photo */}
+                <Scene mode="enter" start={1} end={0.35} initial={1}>
+                  <div className="zoom-frame group relative aspect-[4/3] overflow-hidden">
+                    <div className="zoom-inner absolute inset-0">
+                      <PhotoPlaceholder />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    {/* Number watermark */}
+                    <div className="zoom-number absolute -bottom-6 right-4 sm:right-8 text-[9rem] sm:text-[14rem] font-black text-white/[0.05] leading-none tracking-tighter select-none pointer-events-none">
+                      {service.number}
+                    </div>
+                  </div>
+                </Scene>
+
+                {/* Feature list */}
+                <FadeIn variant="stagger" className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 sm:gap-x-10">
+                  {service.items.map((item, i) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 py-4 border-t border-white/8"
+                      style={{ '--i': i } as React.CSSProperties}
+                    >
+                      <span className="w-1 h-1 rounded-full bg-red-500 flex-shrink-0" />
+                      <span className="text-gray-300 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </FadeIn>
+
+                <FadeIn variant="lux" className="mt-10 lg:hidden">
+                  <QuoteButton />
+                </FadeIn>
+              </div>
             </div>
           </div>
         </section>
       ))}
 
       {/* ── Bottom CTA ────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-[#111111] border-t border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">Not sure what you need?</h2>
-              <p className="text-gray-400 text-sm">Give us a call or send a message — we&apos;ll point you in the right direction.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-colors text-sm">
+      <section data-glow className="relative py-24 sm:py-32 lg:py-44 bg-[#0b0b0b] border-t border-white/8 overflow-hidden">
+        <div className="absolute inset-0 hero-glow" aria-hidden />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+          <ScrubHeading
+            className="text-4xl sm:text-6xl lg:text-8xl font-black text-white leading-[1.02] tracking-tight mb-6 sm:mb-8"
+            segments={[{ text: 'Not sure what you need?' }]}
+          />
+          <FadeIn variant="lux" className="flex flex-col items-center">
+            <p className="text-gray-400 text-base sm:text-lg mb-10 max-w-md">Give us a call or send a message — we&apos;ll point you in the right direction.</p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/contact" className="nav-cta inline-flex items-center justify-center px-7 py-4 text-white font-bold rounded-full text-sm">
                 Contact Us
               </Link>
-              <a href="tel:07878009694" className="inline-flex items-center justify-center px-6 py-3.5 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white font-medium rounded-full transition-colors text-sm">
+              <a href="tel:07878009694" className="inline-flex items-center justify-center px-7 py-4 border border-white/15 hover:border-white/30 hover:bg-white/5 text-gray-200 hover:text-white font-medium rounded-full transition-all duration-300 text-sm">
                 07878 009694
               </a>
             </div>
